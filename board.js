@@ -49,6 +49,7 @@ function renderAnon() {
   anonPosts.forEach((post) => {
     const li = document.createElement("li");
     li.className = "anon-item";
+    li.dataset.id = post.id;
 
     const badge = document.createElement("span");
     badge.className = "anon-badge";
@@ -64,8 +65,35 @@ function renderAnon() {
     content.appendChild(textSpan);
     li.appendChild(badge);
     li.appendChild(content);
+
+    if (isUnlocked) {
+      const deleteBtn = document.createElement("button");
+      deleteBtn.type = "button";
+      deleteBtn.className = "anon-delete-btn";
+      deleteBtn.textContent = "삭제";
+      deleteBtn.setAttribute("aria-label", "글 삭제");
+      deleteBtn.addEventListener("click", () => deleteAnonPost(post.id));
+      li.appendChild(deleteBtn);
+    }
+
     anonList.appendChild(li);
   });
+}
+
+function deleteAnonPost(id) {
+  const li = anonList.querySelector(`[data-id="${id}"]`);
+  const removeFromDb = () =>
+    anonRef.child(id).remove().catch((error) => {
+      console.error("익명 글 삭제 오류:", error);
+      showAnonError("글을 삭제하지 못했습니다.");
+    });
+
+  if (li) {
+    li.classList.add("removing");
+    li.addEventListener("animationend", removeFromDb, { once: true });
+  } else {
+    removeFromDb();
+  }
 }
 
 function addAnonPost(text) {

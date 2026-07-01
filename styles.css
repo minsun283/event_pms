@@ -39,14 +39,19 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 28px 16px 48px;
+  padding: 0 16px 48px;
 }
 
 .planner {
   width: min(92vw, 420px);
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  padding-top: 0;
+}
+
+.section-anonymous {
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 .section-title {
@@ -152,7 +157,7 @@ body {
   border: 1.5px dashed var(--purple-border);
   border-radius: 12px;
   padding: 12px 14px;
-  margin-bottom: 14px;
+  margin-top: 14px;
 }
 
 .password-form {
@@ -262,6 +267,30 @@ body {
 .anon-text.locked {
   color: var(--muted);
   font-style: italic;
+}
+
+.anon-delete-btn {
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #e8956f;
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin-top: 2px;
+  transition: background 0.12s, color 0.12s;
+}
+
+.anon-delete-btn:hover {
+  background: rgba(232, 149, 111, 0.12);
+  color: #d4785a;
+}
+
+.anon-item.removing {
+  animation: fadeOut 0.18s ease forwards;
 }
 
 .error-msg.hidden {
