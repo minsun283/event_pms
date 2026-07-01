@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TO DO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="planner">
+    <section class="section section-todo">
+      <h2 class="section-title title-blue">TO DO</h2>
+
+      <div class="add-box">
+        <form class="add-form" id="addForm">
+          <input
+            type="text"
+            id="todoInput"
+            class="add-input"
+            placeholder="새 할 일을 입력하세요..."
+            autocomplete="off"
+            maxlength="120"
+          />
+          <button type="submit" class="add-btn" aria-label="할 일 추가">+</button>
+        </form>
+        <p class="error-msg hidden" id="errorMsg"></p>
+      </div>
+
+      <div class="box box-blue list-box">
+        <ul class="todo-list" id="todoList"></ul>
+        <p class="empty-msg" id="emptyMsg">할 일을 적어보세요</p>
+      </div>
+    </section>
+
+    <section class="section section-anonymous">
+      <h2 class="section-title title-purple">ANONYMOUS</h2>
+
+      <div class="add-box add-box-purple">
+        <form class="add-form" id="anonForm">
+          <input
+            type="text"
+            id="anonInput"
+            class="add-input"
+            placeholder="익명으로 글 작성..."
+            autocomplete="off"
+            maxlength="300"
+          />
+          <button type="submit" class="add-btn add-btn-purple" aria-label="글 올리기">+</button>
+        </form>
+        <p class="error-msg hidden" id="anonErrorMsg"></p>
+      </div>
+
+      <div class="password-box">
+        <form class="password-form" id="passwordForm">
+          <input
+            type="password"
+            id="passwordInput"
+            class="password-input"
+            placeholder="비밀번호 입력"
+            autocomplete="off"
+            maxlength="10"
+          />
+          <button type="submit" class="password-btn">확인</button>
+        </form>
+        <p class="unlock-msg hidden" id="unlockMsg">내용이 공개되었습니다</p>
+        <p class="error-msg hidden" id="passwordErrorMsg"></p>
+      </div>
+
+      <div class="box box-purple list-box anon-list-box">
+        <ul class="anon-list" id="anonList"></ul>
+        <p class="empty-msg" id="anonEmptyMsg">아직 글이 없어요</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/12.15.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.15.0/firebase-database-compat.js"></script>
+  <script src="firebase.js"></script>
+  <script src="app.js"></script>
+  <script src="board.js"></script>
+</body>
+</html>
